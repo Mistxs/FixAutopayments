@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+
+
+body {
+  display: grid;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+
+  & > input {
+    flex: 1 1 10ch;
+    margin: .5rem;
+
+    &[type="email"] {
+      flex: 3 1 30ch;
+    }
+  }
+}
+
+input {
+  border: none;
+  background: hsl(0 0% 93%);
+  border-radius: .25rem;
+  padding: .75rem 1rem;
+  width: 500px;
+}
+ input[type="submit"] {
+    background: hotpink!important;
+    color: white;
+    box-shadow: 0 .75rem .5rem -.5rem hsl(0 50% 80%)!important;
+    margin-left: 20px;
+    width: 100px;
+  }
+
+
+    </style>
+    <meta charset="UTF-8">
+    <title>Проверяем запись через API</title>
+</head>
+<body>
+<form method="post">
+  <input type="text" placeholder="Ссылка на запись" name="URL">
+  <input type="submit" value="Отправить" >
+</form>
+<h4>Результат: </h4>
+{{data}}
+<pre>
+    {{full}}
+</pre>
+</body>
+</html>

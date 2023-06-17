@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <title>Autopayment_FIX by Mistxs</title>
+    <style>
+    h3 {
+    color: #fff;
+    font-weight: 100;
+    font-family: monospace;}
+
+        h1{
+          font-size: 30px;
+          color: #fff;
+          text-transform: uppercase;
+          font-weight: 300;
+          text-align: center;
+          margin-bottom: 15px;
+        }
+        table{
+          width:100%;
+          table-layout: fixed;
+        }
+        .tbl-header{
+          background-color: rgba(255,255,255,0.3);
+         }
+        .tbl-content{
+          height:600px;
+          overflow-x:auto;
+          margin-top: 0px;
+          border: 1px solid rgba(255,255,255,0.3);
+        }
+        th{
+          padding: 20px 15px;
+          text-align: left;
+          font-weight: 500;
+          font-size: 12px;
+          color: #fff;
+          text-transform: uppercase;
+        }
+        td{
+          padding: 15px;
+          text-align: left;
+          vertical-align:middle;
+          font-weight: 300;
+          font-size: 12px;
+          color: #fff;
+          border-bottom: solid 1px rgba(255,255,255,0.1);
+        }
+
+tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+
+        /* demo styles */
+
+        @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+        body{
+          background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+          background: linear-gradient(to right, #25c481, #25b7c4);
+          font-family: 'Roboto', sans-serif;
+        }
+        section{
+          margin: 50px;
+        }
+
+
+        /* follow me template */
+        .made-with-love {
+          margin-top: 40px;
+          padding: 10px;
+          clear: left;
+          text-align: center;
+          font-size: 10px;
+          font-family: arial;
+          color: #fff;
+        }
+        .made-with-love i {
+          font-style: normal;
+          color: #F50057;
+          font-size: 14px;
+          position: relative;
+          top: 2px;
+        }
+        .made-with-love a {
+          color: #fff;
+          text-decoration: none;
+        }
+        .made-with-love a:hover {
+          text-decoration: underline;
+        }
+
+
+        /* for custom scrollbar for webkit browser*/
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        }
+        ::-webkit-scrollbar-thumb {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        }
+    </style>
+
+</head>
+<body>
+<section>
+  <!--for demo wrap-->
+  <h1>Результат текущей работы программы</h1>
+    <h3>Дата: {{now}}</h3>
+<form id="" method="post" class="form-horizontal">
+    <label class="col-xs-3 control-label">Выберите дату</label>
+        <input type="date" class="form-control" name="cal" min = "2023-03-01" max = "{{enddata}}" />
+    <button type="submit" class="btn btn-default">Показать</button>
+</form>
+  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th>Имя клиента</th>
+          <th>Номер телефона</th>
+          <th>Номер документа</th>
+          <th>ID Услуг</th>
+          <th>Дата</th>
+          <th>Результат проверки</th>
+          <th>Данные по абонементам</th>
+          <th>Результат списания</th>
+          <th>Ссылка на запись</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+      {% for item in data_list %}
+        <tr>
+          <td>{{ item['client'] }}</td>
+          <td>{{ item['phone'] }}</td>
+          <td>{{ item['doc_id'] }}</td>
+          <td>{{ item['services'] }}</td>
+          <td>{{ item['date'] }}</td>
+          <td>{{ item['check_res'] }}</td>
+          <td>{{ item['ab_data'] }}</td>
+          <td>{{ item['pay_res'] }}</td>
+          <td><a href = "{{ item['url'] }}" target="_blank">Ссылка</a></td>
+        </tr>
+      {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+</section>
+</body>
+</html>
